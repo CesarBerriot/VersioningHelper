@@ -47,12 +47,6 @@ void FVersioningHelperModule::ShutdownModule()
 
 TSharedRef<SDockTab> FVersioningHelperModule::OnSpawnPluginTab(FSpawnTabArgs const & SpawnTabArgs)
 {
-	FText WidgetText = FText::Format(
-		LOCTEXT("WindowWidgetText", "Add code to {0} in {1} to override this window's contents"),
-		FText::FromString(TEXT("FVersioningHelperModule::OnSpawnPluginTab")),
-		FText::FromString(TEXT("VersioningHelper.cpp"))
-	);
-
 	return SNew(SDockTab)
 	       .TabRole(ETabRole::NomadTab)
 	       [
@@ -73,7 +67,7 @@ void FVersioningHelperModule::RegisterMenus()
 	{
 		UToolMenu * Menu = UToolMenus::Get()->ExtendMenu("LevelEditor.MainMenu.Window");
 		{
-			FToolMenuSection & Section = Menu->FindOrAddSection("WindowLayout");
+			FToolMenuSection & Section = Menu->FindOrAddSection("Versioning Helper");
 			Section.AddMenuEntryWithCommandList(FVersioningHelperCommands::Get().OpenPluginWindow, PluginCommands);
 		}
 	}
